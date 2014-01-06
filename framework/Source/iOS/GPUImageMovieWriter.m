@@ -404,6 +404,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
             }
             else if( ! [assetWriterAudioInput appendSampleBuffer:audioBuffer] )
             {
+                [[NSNotificationCenter defaultCenter] postNotificationName: @"GPUImageErrorNotified" object: nil];
                 NSLog(@"Problem appending audio buffer at time: %@", CFBridgingRelease(CMTimeCopyDescription(kCFAllocatorDefault, currentSampleTime)));
             }
             else
