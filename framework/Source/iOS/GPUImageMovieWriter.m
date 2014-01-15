@@ -85,6 +85,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
     audioEncodingIsFinished = NO;
 
     movieWritingQueue = dispatch_queue_create("com.sunsetlakesoftware.GPUImage.movieWritingQueue", NULL);
+    dispatch_set_target_queue(movieWritingQueue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0));
     
     videoSize = newSize;
     movieURL = newMovieURL;
