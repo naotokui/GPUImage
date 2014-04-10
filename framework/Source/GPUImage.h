@@ -17,8 +17,6 @@
 #import "GPUImageTextureInput.h"
 #import "GPUImageUIElement.h"
 #import "GPUImageBuffer.h"
-#import "GPUImageFramebuffer.h"
-#import "GPUImageFramebufferCache.h"
 
 // Filters
 #import "GPUImageFilter.h"

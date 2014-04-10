@@ -61,6 +61,7 @@
 - (void)update;
 {
     [GPUImageContext useImageProcessingContext];
+    [self initializeOutputTextureIfNeeded];
     
     if(CMTIME_IS_INVALID(time)) {
         time = CMTimeMakeWithSeconds(0, 600);
@@ -88,10 +89,7 @@
     CGContextRelease(imageContext);
     CGColorSpaceRelease(genericRGBColorspace);
     
-    // TODO: This may not work
-    outputFramebuffer = [[GPUImageContext sharedFramebufferCache] fetchFramebufferForSize:layerPixelSize textureOptions:self.outputTextureOptions onlyTexture:YES];
-
-    glBindTexture(GL_TEXTURE_2D, [outputFramebuffer texture]);
+    glBindTexture(GL_TEXTURE_2D, outputTexture);
     // no need to use self.outputTextureOptions here, we always need these texture options
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (int)layerPixelSize.width, (int)layerPixelSize.height, 0, GL_BGRA, GL_UNSIGNED_BYTE, imageData);
     

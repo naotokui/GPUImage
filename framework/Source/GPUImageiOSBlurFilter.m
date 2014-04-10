@@ -40,7 +40,6 @@
     self.blurRadiusInPixels = 12.0;
     self.saturation = 0.8;
     self.downsampling = 4.0;
-    self.rangeReductionFactor = 0.6;
 
     return self;
 }
@@ -99,16 +98,6 @@
 - (void)setDownsampling:(CGFloat)newValue;
 {
     _downsampling = newValue;
-}
-
-- (void)setRangeReductionFactor:(CGFloat)rangeReductionFactor
-{
-    luminanceRangeFilter.rangeReductionFactor = rangeReductionFactor;
-}
-
-- (CGFloat)rangeReductionFactor
-{
-    return luminanceRangeFilter.rangeReductionFactor;
 }
 
 @end

@@ -23,7 +23,7 @@
         return nil;
     }
 
-    [self yuvConversionSetup];
+    [self textureCacheSetup];
 
     self.compositon = compositon;
     self.videoComposition = videoComposition;
