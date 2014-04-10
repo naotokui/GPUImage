@@ -264,7 +264,7 @@ void dataProviderUnlockCallback (void *info, const void *data, size_t size);
     }
 
     if (framebufferReferenceCount <= 0){
-        NSLog(@"GPUImageFrameBuffer - Tried to overrelease a framebuffer, did you forget to call -useNextFrameForImageCapture before using -imageFromCurrentFramebuffer? count: %ld", framebufferReferenceCount );
+        NSLog(@"GPUImageFrameBuffer - Tried to overrelease a framebuffer, did you forget to call -useNextFrameForImageCapture before using -imageFromCurrentFramebuffer? count: %d", (int)framebufferReferenceCount );
     }
  //   NSAssert(framebufferReferenceCount > 0, @"Tried to overrelease a framebuffer, did you forget to call -useNextFrameForImageCapture before using -imageFromCurrentFramebuffer?");
     framebufferReferenceCount--;
