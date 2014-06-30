@@ -298,6 +298,27 @@ NSString *const kGPUImageYUVVideoRangeConversionForLAFragmentShaderString = SHAD
 //    if (conn.supportsVideoMaxFrameDuration)
 //        conn.videoMaxFrameDuration = CMTimeMake(1,60);
     
+    // Nao - 2014.6.20
+    // Force to have mic input here
+    _microphone = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+    audioInput = [AVCaptureDeviceInput deviceInputWithDevice:_microphone error:nil];
+    if ([_captureSession canAddInput:audioInput])
+    {
+        [_captureSession addInput:audioInput];
+    }
+    audioOutput = [[AVCaptureAudioDataOutput alloc] init];
+    
+    if ([_captureSession canAddOutput:audioOutput])
+    {
+        [_captureSession addOutput:audioOutput];
+    }
+    else
+    {
+        NSLog(@"Couldn't add audio output");
+    }
+    [audioOutput setSampleBufferDelegate:self queue:audioProcessingQueue];
+    
+    
     [_captureSession commitConfiguration];
     
 	return self;
